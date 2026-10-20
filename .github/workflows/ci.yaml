@@ -11,4 +11,5 @@ jobs:
 
   dockerization:
     needs: lint-code
+    secrets: inherit
     uses: ./.github/workflows/dockerpush.yaml 
