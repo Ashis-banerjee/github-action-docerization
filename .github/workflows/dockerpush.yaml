@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       # 1. Download repository files
@@ -30,3 +30,10 @@ jobs:
           context: .
           push: true
           tags: ${{vars.DOCKERHUB_USERNAME}}/my-python-app:latest
+
+      - name: Deploy on EC2
+        env:
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker compose pull app
+          docker compose up -d --no-build

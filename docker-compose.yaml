@@ -1,0 +1,5 @@
+services:
+  app:
+    image: ash00xy/my-python-app:tag
+    ports:
+      - 8080:8080
