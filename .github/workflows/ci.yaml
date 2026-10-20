@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  push:
+   branches:
+     - main
+
+jobs:
+  lint-code:
+    uses: ./.github/workflows/lintpy.yaml  
+
+  dockerization:
+    needs: lint-code
+    uses: ./.github/workflows/dockerpush.yaml 
