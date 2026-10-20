@@ -38,5 +38,4 @@ jobs:
         env:
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker compose pull app
-          docker compose up -d --no-build
+          docker compose up -d --force-recreate --no-build
